@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicios lógica de programación - JavaScript</title>
+</head>
+<body>
+    <script>
+        /*
+        1) PELICULAS FAVORITAS:
+         Crea un objeto usuario con propiedades como nombre y peliculasFavoritas, que es un array de objetos donde cada objeto representa una película con propiedades como titulo y año. Agrega al menos tres películas favoritas y muestra en la consola el título de la segunda película favorita.
+        */
+       var usuario = {
+        nombre: "Florencia Ceresa",
+        peliculasFavoritas: [
+            {titulo: "Wonder", año: 2017},
+            {titulo: "Papá es un ídolo", año: 2000},
+            {titulo: "Titanic", año: 1998},
+        ]
+       };
+       console.log(usuario.peliculasFavoritas[1].titulo);
+
+
+       /*
+        2) GESTOR DE CONTACTOS:
+        Crea un objeto contactos que almacene una lista de objetos, donde cada objeto represente un contacto con propiedades como nombre, telefono y email. Luego, agrega un nuevo contacto a la lista y muestra en la consola la cantidad total de contactos.
+        */
+       var contactos = {
+        contacto1: {nombre: "Martín", telefono: "3467854269", email: "martinmaurizi@gmail.com"},
+        contacto2: {nombre: "Claudia", telefono: "3467854269", email: "claulucangeli@gmail.com"},
+        contacto3: {nombre: "Pablo", telefono: "3467854269", email: "pabloceresa@gmail.com"}
+       }
+
+       //Agregar nuevo contacto
+       var nuevoContacto = {nombre: "Catalina", telefono: "3467854269", email: "catalinaceresa@gmail.com"};
+       contactos.contacto4 = nuevoContacto;
+
+       //Calcular cuantos contactos hay en el objeto
+       var cantidadDeContactos = Object.keys(contactos).length;
+       console.log("Cantidad de contactos:", cantidadDeContactos);
+
+
+       /*
+        3) TIENDA EN LÍNEA:
+        Crea un objeto producto con propiedades como nombre, precio y disponible. Luego, crea una función llamada mostrarProducto que tome un objeto producto como argumento y muestre en la consola toda la información del producto.
+        */
+       var producto = {
+        nombre: "Libro", 
+        precio: "$8500", 
+        disponible: true
+    };
+
+    function mostrarProducto(producto) {
+        console.log("Tipo de producto:", producto.nombre);
+        console.log("Precio:", producto.precio);
+        console.log("Disponible:", producto.disponible ? "Sí" : "No");
+    }
+
+    mostrarProducto(producto);
+
+
+        /*
+        4) CALIFICACIONES DE ESTUDIANTES:
+        Crea un objeto clase que contenga un array de objetos, donde cada objeto represente un estudiante con propiedades como nombre y calificaciones, que es un array de números. Agrega al menos tres estudiantes y muestra en la consola el promedio de calificaciones de cada estudiante.
+        */
+        var clase = {
+            estudiantes: [
+                {nombre: "Agustina", calificaciones: [8, 6, 7]},
+                {nombre: "Sofía", calificaciones: [6, 6, 5]},
+                ]
+            };
+
+        // Agregar estudiantes
+        var nuevoEstudiante1 = {nombre: "Lucas", calificaciones: [9, 8, 9]};
+        var nuevoEstudiante2 = {nombre: "Bianca", calificaciones: [5, 8, 7]};
+        var nuevoEstudiante3 = {nombre: "Malena", calificaciones: [4, 9, 7]};
+
+        clase.estudiantes.push(nuevoEstudiante1, nuevoEstudiante2, nuevoEstudiante3);
+
+        // Función para calcular el promedio de calificaciones de un estudiante
+        function calcularPromedio(estudiante) {
+            var totalCalificaciones = estudiante.calificaciones.reduce(function (a, b) {
+                return a + b;
+            }, 0);
+            var promedio = totalCalificaciones / estudiante.calificaciones.length;
+            return promedio;
+        }
+
+        console.log("\nPromedio de calificaciones de cada estudiante:");
+
+        // Calcular el promedio de cada estudiante y mostrarlo en la consola
+        clase.estudiantes.forEach(function (estudiante) {
+        var promedio = calcularPromedio(estudiante);
+        console.log(estudiante.nombre + ": " + promedio.toFixed(2)); // Redondear el promedio a 2 decimales
+    });
+
+
+        /*
+        5) RED SOCIAL:
+        Crea un objeto perfil que almacene propiedades como nombre, edad y amigos, que es un array de objetos donde cada objeto representa un amigo con propiedades como nombre y edad. Agrega al menos tres amigos y muestra en la consola el nombre del amigo más joven.
+        */
+       var perfil = {
+        nombre: "Florencia",
+        edad: 22,
+        amigos: [
+            {nombre: "Jimena", edad: 22},
+            {nombre: "Macarena", edad: 28},
+       ]
+       };
+
+       //Agregar amigos
+        var nuevoAmigo1 = {nombre: "Daiana", edad: 30};
+        var nuevoAmigo2 = {nombre: "Estefania", edad: 15};
+        var nuevoAmigo3 = {nombre: "Milena", edad: 17};
+        
+        perfil.amigos.push(nuevoAmigo1, nuevoAmigo2, nuevoAmigo3);
+
+       // Inicialización de variable para almacenar el amigo más joven
+        var amigoMasJoven = perfil.amigos[0]; 
+
+        // For para recorrer la lista de amigos y encontrar al más joven
+        for (var i = 0; i < perfil.amigos.length; i++) {
+            if (perfil.amigos[i].edad < amigoMasJoven.edad) {
+                amigoMasJoven = perfil.amigos[i];
+            }
+        }
+
+        console.log("El amigo más joven es:", amigoMasJoven.nombre);
+
+        
+
+
+    </script>
+</body>
+</html>
