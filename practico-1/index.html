@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Práctico 1</title>
+</head>
+<body>
+    <script>
+        /*
+        1.Suma de elementos en un arreglo: 
+        Escribe una función que use reduce() para sumar todos los elementos de un arreglo de números.
+        */
+       let sumaNumeros = [50, 30, 45, 87, 22].reduce((a,b) => a + b);
+       console.log("1) La suma de los elementos del arreglo es: ", sumaNumeros);
+
+
+       /*
+        2.Multiplicación de elementos en un arreglo: 
+        Escribe una función que use reduce() para multiplicar todos los elementos de un arreglo de números.
+        */
+        function multiplicarElementos(arreglo) {
+        let producto = arreglo.reduce((acumulador, elemento) => acumulador * elemento, 1);
+        return producto;
+        }
+
+        let numeros = [10, 10];
+        let resultado = multiplicarElementos(numeros);
+        console.log("2) La multiplicación de los elementos del arreglo da como resultado: ", resultado); 
+
+
+        
+       /*
+        3.Concatenación de cadenas: 
+        Implementa una función que use reduce() para concatenar todos los elementos de cadenas en una sola cadena.
+        */
+       function concatenarCadenas(arreglo) {
+        let cadenaConcatenada = arreglo.reduce((acumulador, elemento) => acumulador + elemento, '');
+        return cadenaConcatenada;
+       }
+
+       let cadenas = ["3) Hola, ", "mi nombre es: ", "Florencia ", "y me encanta la ", "programación"];
+       let oracionCompleta = concatenarCadenas(cadenas);
+       console.log(oracionCompleta);
+       
+
+       /*
+        4.Calcular promedio: 
+        Escribe una función que use reduce() para calcular el promedio de un arreglo de numeros.
+        */
+        function calcularPromedio(arreglo) {
+            if (arreglo.length === 0) {
+            return 0; 
+        }
+
+        let suma = arreglo.reduce((acumulador, elemento) => acumulador + elemento, 0);
+
+        let promedio = suma / arreglo.length;
+
+        return promedio;
+        }
+
+        let notas = [8, 7, 5, 3];
+        let promedioNotas = calcularPromedio(notas);
+        console.log("4) El promedio de las notas es: ", promedioNotas);
+
+
+        /*
+        5.Encontrar el valor máximo: 
+        Crea una función que use reduce() para encontrar el valor máximo de un arreglo de numeros.
+        */
+       function valorMaximo(arreglo) {
+        let valorMaximo = arreglo.reduce((maximo, elemento) => (elemento > maximo) ? elemento = maximo : elemento, 0);
+
+        return valorMaximo;
+       }
+
+       let valores = [1000, 205, 3054, 695];
+       let maximo = valorMaximo(valores);
+       console.log("5) El valor máximo del arreglo es: ", maximo); 
+
+
+
+
+
+        /*
+        6.Contar ocurrencias: 
+        Crea una función que cuente cuantas veces aparece un elemento específico en un arreglo utilizando reduce.
+        */
+       function contarOcurrencias(arreglo, elemento) {
+        let contar = arreglo.reduce((contador, valor) => {
+            return valor === elemento ? contador + 1 : contador;
+        }, 0);
+
+        return contar;
+       }
+
+       let arreglo = ["Manzana", "Banana", "Pera", "Manzana", "Manzana", "Durazno", "Frutilla", "Naranja", "Frutilla"];
+        let elementoBuscado = "Manzana";
+        let apariciones = contarOcurrencias(arreglo, elementoBuscado);
+        console.log(`6) El elemento ${elementoBuscado} aparece ${apariciones} veces en el arreglo.`);
+
+
+        /*
+        7.Ordenar palabras por longitud: 
+        Crea una función que ordene un arreglo de palabras por su longitud, es decir, la cantidad de caracteres.
+        */
+       function ordenarPorLongitud(arreglo) {
+        arreglo.sort((a, b) => a.length - b.length);
+            return arreglo;
+        }
+
+        let palabras = ["Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sábado", "Domingo"];
+        let palabrasOrdenadas = ordenarPorLongitud(palabras);
+        console.log(palabrasOrdenadas);
+       
+
+        /*
+        8.Busqueda de un elemento en un arreglo: 
+        Crea una función que busque un elemento específico en un arrelo y devuelva true si se encuentra o false si no se encuentra.
+        */
+       function buscarElemento(arreglo, elemento) {
+        return arreglo.includes(elemento);
+       }
+
+       const arreglo2 = [10, 20, 30, 40, 50, 60];
+        const elemenBuscado = 25;
+
+       if (buscarElemento(arreglo2, elemenBuscado)) {
+            console.log(`8) El elemento ${elemenBuscado} se encuentra en el arreglo.`);
+        } else {
+            console.log(`8) El elemento ${elemenBuscado} no se encuentra en el arreglo.`);
+        }
+
+
+
+
+        /*
+        9.Búsqueda de la primera coincidencia:
+        Implementa una función que busque la primera instancia de un elemento en un arreglo y devuelva su índice. Si el elemento no está en el arreglo, devuelve -1.
+        */
+        function buscarElemento(arreglo, elemento) {
+            for (let i = 0; i < arreglo.length; i++) {
+                if (arreglo[i] === elemento) {
+                    return i; 
+                }
+            }
+            return -1; 
+        }
+
+        let arreglo3 = [11, 26, 58, 96, 54, 78, 22];
+        let elementoABuscar = 54;
+        let indice = buscarElemento(arreglo3, elementoABuscar);
+
+        if (indice !== -1) {
+            console.log(`9) El elemento ${elementoABuscar} se encuentra en el índice ${indice}.`);
+        } else {
+            console.log(`9) El elemento ${elementoABuscar} no se encuentra en el arreglo.`);
+        }
+
+
+
+        /*
+        10.Búsqueda de la última coincidencia:
+        Crea una función que busque la última instancia de un elemento en un arreglo y devuelva su índice. Si el elemento no está en el arreglo, devuelve -1.
+        */
+        function buscarUltimoElemento(arreglo, elemento) {
+        let ultimoIndice = -1;
+
+        for (let i = 0; i < arreglo.length; i++) {
+            if (arreglo[i] === elemento) {
+                ultimoIndice = i;  
+            }
+        }
+
+        return ultimoIndice;
+        }
+
+        let arreglo4 = [10, 10, 25, 24, 98, 10];
+        let elementoABuscar2 = 10;
+        let indice2 = buscarUltimoElemento(arreglo4, elementoABuscar2);
+
+        if (indice2 !== -1) {
+            console.log(`10) La última instancia del elemento ${elementoABuscar2} se encuentra en el índice ${indice2}.`);
+        } else {
+            console.log(`10) El elemento ${elementoABuscar2} no se encuentra en el arreglo.`);
+        }
+        
+
+    </script>
+    
+</body>
+</html>
