@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <link rel="stylesheet" href="style.css">
+    <title>Tienda de Productos</title>
+</head>
+<body>
+    <div class="container">
+    <div id="productos">
+        <h1>Tienda de productos</h1>
+        <div class="container-products">
+        <!-- Aquí se mostrarán los productos en imágenes -->
+        <div class="producto electronico" id="producto_0">
+            <div>
+                <img src="assets/laptop.jpg" alt="Laptop">
+            </div>
+            <div>
+                <p class="nombre">Laptop</p>
+                <p class="precio">1000</p>
+                <p class="potencia">Potencia: 500W</p>
+                <button class="product" onclick="agregarAlCarrito(0, 'electronico')">Agregar al carrito</button>
+            </div>
+        </div>
+        <div class="producto alimenticio" id="producto_1">
+            <div>
+                <img src="assets/manzanas.jpg" alt="Manzanas">
+            </div>
+            <div>
+                <p class="nombre">Manzanas</p>
+                <p class="precio">2</p>
+                <p class="caducidad">Fecha de Caducidad: 01/10/2023</p>
+                <button class="product" onclick="agregarAlCarrito(1, 'alimenticio')">Agregar al carrito</button>
+            </div>
+        </div>
+        </div>
+        <!-- Agregar más productos aquí -->
+    </div>
+    <div id="carrito">
+        <h2>Carrito</h2>
+        <div class="container-carrito">
+            <div>
+                <label for="cantidad"></label>
+                <span id="cantidad"></span>
+            </div>
+            <div>
+                <button class="vaciar" id="vaciar-carrito">Vaciar carrito</button>
+            </div>
+            <div class="mi-compra">
+                <div>
+                    <h3>Mi compra</h3>
+                </div>
+                <div class="mi-lista">
+                    <ul id="lista-carrito">
+                        <!-- Aquí se mostrarán los productos en el carrito -->
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>

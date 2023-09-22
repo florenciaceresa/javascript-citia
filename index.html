@@ -6,6 +6,27 @@
     <title>Ejercicios lógica de programación - JavaScript</title>
 </head>
 <body>
+    <h2>Ejercicio 6</h2>
+    <form id="form">
+        <div>
+            <label for="name">Nombres:</label>
+            <input type="text" id="name" required>
+        </div>
+        <br>
+        <div>
+            <label for="grade">Calificaciones:</label>
+            <input type="text" id="grades" required>
+        </div>
+        <br>
+        <button type="submit" id="submitButton">Agregar Estudiante</button>
+        <button type="reset" id="resetButton">Resetear</button>
+    </form>
+
+
+
+
+
+
     <script>
         /*
         1) PELICULAS FAVORITAS:
@@ -130,6 +151,180 @@
 
         
 
+
+        /*
+        6)
+        Solicitar al usuario que ingrese tres estudiantes con propiedades como nombre y calificaciones, que es un array de números. Agrega al menos tres estudiantes y muestra en la consola el promedio de calificaciones de cada estudiante.
+        Esto tiene que hacerse con HTML y Javascript, donde el usuario ingrese tres nombres de estudiantes distintos y sus notas correspondientes. Cuando termine de ingresar los nombres, el boton se tiene que deshabilitar. Hacer las validaciones correspondientes. Hacer un boton reset para volver a empezar.
+        */
+
+        // Variable para contar los estudiantes ingresados
+        let studentsEntered = 0;
+
+        // Función para calcular el promedio de calificaciones
+        function calculateAverage(grades) {
+            const gradesArray = grades.split(",").map(Number);
+            const sum = gradesArray.reduce((acc, grade) => acc + grade, 0);
+            return sum / gradesArray.length;
+        }
+
+        // Función para manejar el envío del formulario
+        function handleSubmit(event) {
+            event.preventDefault();
+
+            // Obtener los datos ingresados por el usuario
+            const name = document.getElementById("name").value;
+            const grades = document.getElementById("grades").value;
+
+            // Calcular y mostrar el promedio de calificaciones en la consola
+            const average = calculateAverage(grades);
+            console.log(`Promedio de calificaciones de ${name}: ${average}`);
+
+            // Incrementar el contador de estudiantes ingresados
+            studentsEntered++;
+
+            // Si se ingresaron tres estudiantes, deshabilitar el formulario
+            if (studentsEntered === 3) {
+                document.getElementById("name").disabled = true;
+                document.getElementById("grades").disabled = true;
+                document.getElementById("submitButton").disabled = true;
+            }
+        }
+
+        // Función para manejar el botón de reset
+        var handleReset
+
+        // Agregar eventos al formulario y al botón de reset
+        document.getElementById("form").addEventListener("submit", handleSubmit);
+        document.getElementById("resetButton").addEventListener("click", handleReset);
+
+
+
+
+        //CLASE 4
+        //Ejemplo funciones constructoras
+        function Cliente (nombre, apellido, cuenta, deuda) {
+            this.nombre = nombre;
+            this.apellido = apellido;
+            this.cuenta = cuenta;
+            this.deuda = deuda;
+            this.active = 1;
+        }
+
+        const juanPerez = new Cliente("Juan", "Parez", "111", "100");
+        const mariaPerez = new Cliente("Maria", "Perez", "222", "200");
+        const gerardoGonzales = new Cliente("Gerardo", "Gonzalez", "433", "50");
+
+        console.log(gerardoGonzales.apellido);
+
+       
+        
+        //CLASE 5
+        //Ejercicio 1
+        const MediosComunicacion = {
+        saludar: function() {
+            console.log("¡Hola!");
+            }
+        };
+
+        const medio1 = Object.create(MediosComunicacion);
+        const medio2 = Object.create(MediosComunicacion);
+        
+        medio1.saludar();
+        medio2.saludar();
+       
+
+
+        //Ejercicio 2
+        class Clientes {
+            saldo = 100;
+
+           constructor(nombre, direccion, email, telefono) {
+            this.nombre;
+            this.direccion;
+            this.email;
+            this.telefono;
+           }
+
+           getSaldo() {
+            console.log(this.saldo);
+           }
+        }
+
+
+        class ResponsableInscripto extends Cliente {
+            constructor(nombre, direccion, email, telefono, cuit, ingresosBrutos, puntoVenta) {
+                super(nombre, direccion, email, telefono);
+                this.cuit = cuit;
+                this.ingresosBrutos = ingresosBrutos;
+                this.puntoVenta = puntoVenta;
+            }
+            ver() {
+                console.log("Cuit:" + this.cuit);
+            }
+        }
+
+
+        class consumidorFinal extends Cliente {
+            constructor(dni, apellido, nombre, direccion, email, telefono) {
+                super(nombre, direccion, email, telefono);
+                this.dni = dni;
+                this.apellido = apellido;
+            }
+            ver() {
+                console.log("DNI:" + this.dni);
+            }
+        }
+
+        cliente1 = new ResponsableInscripto("Martin", "Pedro Lino Funes 168");
+
+
+
+        //Ejercicio tienda de productos
+        class Producto {
+            constructor (nombre, precio, stock) {
+                this.nombre = nombre;
+                this.precio = precio;
+                this.stock = stock;
+            }
+            getInformacionProducto() {
+                return "Nombre: " + this.nombre + "Precio: " + this.precio + "Stock: " + this.stock
+            }
+        }
+
+        let producto1 = new Producto("Cafetera", "$100", "2");
+        producto1.getInformacionProducto();
+
+        class ProductoElectronico extends Producto {
+            constructor(nombre, precio, stock, potencia) {
+                super(nombre, precio, stock);
+                this.potencia = potencia;
+            }
+            getPotencia() {
+                return this.potencia;
+            }
+        }
+
+        class ProductoAlimenticio extends Producto {
+            fechaVencimiento;
+            alimentoPerecedero;
+            constructor(nombre, precio, stock, fechaVencimiento, alimentoPerecedero) {
+                super(nombre, precio, stock);
+                this.fechaVencimiento = this.fechaVencimiento;
+                this.alimentoPerecedero = this.alimentoPerecedero;
+            }
+            tipoAlimento() {
+                let respuesta = "";
+                if(this.alimentoPerecedero) {
+                    respuesta = this.nombre + "Es un elemento perecedero";
+                } else {
+                    respuesta = this.nombre + "No es un elemento perecedero";
+                }
+                return respuesta;
+            }
+
+
+        }
 
     </script>
 </body>

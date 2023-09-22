@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compras</title>
+</head>
+<body>
+    <h2>Mi sitio de compras</h2>
+    <form id="compras-form">
+        <label for="name">Nombre del producto:</label>
+        <input type="text" id="name" required>
+        <button type="submit" id="addProducto">Agregar producto</button>
+        <p>Hola estoy aprendiendo JQuery</p>
+    </form>
+    <div id="result"></div>
+
+
+    <script src="jquery-3.7.1.min.js">
+
+        //Función que se pone al cargar la página por primera vez
+        $(document).ready(function () {
+            
+        });
+
+        $("#addProducto").click(function () {
+            alert("Hizo click");
+        });
+
+        $("p").css("background-color", "yellow");
+
+
+
+    </script>
+</body>
+</html>
