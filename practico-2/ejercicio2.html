@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TP 2 - JQuery</title>
+</head>
+<body>
+    <!--Seleccionar todos los elementos <span> que están dentro de un <div> que, a su vez, está dentro de un <p> y cambiar su color de fondo a amarillo.-->
+    <div class="parent">
+        <p>Parrafo 1</p>
+        <div>
+            <span>Texto 1</span>
+            <span>Texto 2</span>
+        </div>
+        <p>Parrafo 2</p>
+        <div>
+            <span>Texto 3</span>
+            <span>Texto 4</span>
+        </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $("span").css("background", "yellow");
+
+        });
+    </script>
+</body>
+</html>

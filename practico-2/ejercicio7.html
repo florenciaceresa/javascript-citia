@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TP 2 - JQuery</title>
+</head>
+<body>
+    <!--Crea un formulario de registro con campos como nombre, correo electrónico y contraseña. Utiliza eventos para validar los campos del formulario antes de permitir que el usuario lo envíe.-->
+    <form id="registroForm">
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" required><br><br>
+
+        <label for="correo">Correo Electrónico:</label>
+        <input type="email" id="correo" name="correo" required><br><br>
+
+        <label for="contrasena">Contraseña:</label>
+        <input type="password" id="contrasena" name="contrasena" required><br><br>
+
+        <input type="submit" value="Enviar">
+    </form>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $("#registroForm").submit(function(event) {
+                // Obtener los valores de los campos
+                var nombre = $("#nombre").val();
+                var correo = $("#correo").val();
+                var contrasena = $("#contrasena").val();
+
+                // Validar los campos
+                if (nombre === "") {
+                    alert("Por favor, ingresa tu nombre.");
+                    event.preventDefault(); // Evitar que se envíe el formulario
+                    return;
+                }
+
+                if (correo === "") {
+                    alert("Por favor, ingresa tu correo electrónico.");
+                    event.preventDefault(); // Evitar que se envíe el formulario
+                    return;
+                }
+
+                if (contrasena === "") {
+                    alert("Por favor, ingresa tu contraseña.");
+                    event.preventDefault(); // Evitar que se envíe el formulario
+                    return;
+                }
+
+                // Si todos los campos son válidos, el formulario se enviará normalmente
+            });
+            
+        });
+    </script>
+</body>
+</html>

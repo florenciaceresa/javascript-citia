@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TP 2 - JQuery</title>
+</head>
+<body>
+    <!--Crea una lista desplegable (select) con opciones. Utiliza eventos para mostrar información adicional sobre la opción seleccionada en DIV que esté al lado.-->
+    <select id="opciones">
+        <option value="opcion1">Opción 1</option>
+        <option value="opcion2">Opción 2</option>
+        <option value="opcion3">Opción 3</option>
+    </select>
+
+    <div id="informacionAdicional">
+        <!-- La información adicional se mostrará aquí -->
+    </div>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $("#opciones").change(function() {
+                var opcionSeleccionada = $(this).val();
+
+                // Mostrar información adicional en el div
+                if (opcionSeleccionada === "opcion1") {
+                    $("#informacionAdicional").text("¡Hola! Soy la información adicional de la opción 1.");
+                } else if (opcionSeleccionada === "opcion2") {
+                    $("#informacionAdicional").text("¡Hola! Soy la información adicional de la opción 2.");
+                } else if (opcionSeleccionada === "opcion3") {
+                    $("#informacionAdicional").text("¡Hola! Soy la información adicional de la opción 3.");
+                } else {
+                    $("#informacionAdicional").empty(); // Limpiar el contenido si no se selecciona ninguna opción
+                }
+            });
+            
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TP 2 - JQuery</title>
+</head>
+<body>
+    <!--Implementar dos select dependientes. Al seleccionar el país se deben mostrar tres ciudades relacionadas-->
+    <label for="paises">Selecciona un país</label>
+    <select id="paises">
+        <option value="usa">Estados Unidos</option>
+        <option value="canada">Canadá</option>
+        <option value="mexico">México</option>
+    </select>
+    <br><br>
+    <label for="ciudades">Selecciona una ciudad</label>
+    <select id="ciudades">
+        <!--Las opciones se agregarán aquí-->
+    </select>
+
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function() {
+           // Definir un objeto que mapea países a ciudades
+           var ciudadesPorPais = {
+                "usa": ["Nueva York", "Los Ángeles", "Miami"],
+                "canada": ["Toronto", "Montreal", "Vancouver"],
+                "mexico": ["Ciudad de México", "Cancún", "Monterrey"]
+            };
+
+            // Función para cargar las ciudades en el segundo select
+            function cargarCiudades(paisSeleccionado) {
+                // Obtener el select de ciudades
+                var selectCiudades = $("#ciudades");
+
+                // Vaciar las opciones actuales
+                selectCiudades.empty();
+
+                // Obtener las ciudades correspondientes al país seleccionado
+                var ciudades = ciudadesPorPais[paisSeleccionado];
+
+                // Agregar las nuevas opciones al select de ciudades
+                if (ciudades) {
+                    $.each(ciudades, function(index, ciudad) {
+                        selectCiudades.append("<option value='" + ciudad + "'>" + ciudad + "</option>");
+                    });
+                }
+            }
+
+            // Agregar un evento change al select de países
+            $("#paises").change(function() {
+                // Obtener el país seleccionado
+                var paisSeleccionado = $(this).val();
+
+                // Cargar las ciudades correspondientes al país seleccionado
+                cargarCiudades(paisSeleccionado);
+            });
+
+            // Cargar las ciudades iniciales (basado en el país seleccionado inicialmente)
+            cargarCiudades($("#paises").val());
+            
+        });
+    </script>
+</body>
+</html>

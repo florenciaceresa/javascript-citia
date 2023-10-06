@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TP 2 - JQuery</title>
+</head>
+<body>
+    <!--Seleccionar el primer y último elemento hijo <p> dentro del contenedor .container y cambiar su color de texto a rojo.-->
+    <div class="container">
+        <p>Este es un párrafo</p>
+        <ul>
+            <li>Elemento 1</li>
+            <li>Elemento 2</li>
+        </ul>
+        <p>Otro párrafo</p>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            var $contenedor = $(".container");
+            var $primerP = $contenedor.find("p:first");
+            var $ultimoP = $contenedor.find("p:last");
+
+            $primerP.css("color", "red");
+            $ultimoP.css("color", "red");
+        });
+    </script>
+</body>
+</html>
